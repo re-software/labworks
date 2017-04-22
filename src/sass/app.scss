@@ -1,0 +1,13 @@
+@import "main";
+@import "header";
+@import "promo";
+@import "about";
+body{
+    margin: 0;
+    background: #f2f2f2;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.main_wrapper{
+    margin-top: 60px;
+}

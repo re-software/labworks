@@ -1,0 +1,12 @@
+a {
+	text-decoration: none;
+	color:black;
+	height: 100%;
+	display: inline-block;
+	&:hover{
+		color:orange;
+	}
+	&:visited{
+		// color:black;
+	}
+}
