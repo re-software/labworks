@@ -1,0 +1,43 @@
+.faq{
+	height: 500px;
+}
+.accordion{
+	flex-grow: 1;
+	.accordion_item{
+		border:solid black 1px;
+		border-bottom:none;
+		&:last-child{
+			border-bottom:solid black 1px;
+		}
+		.item_title{
+			font-size: 1.3rem;
+			border:solid white 1px;
+			padding: .5rem;
+			position:relative;
+			user-select: none;
+			&:after{
+				content:"\f000";
+				position:absolute;
+				right: 0;
+				padding-right: 5px;
+			}
+		}
+		.item_content{
+			display: none;
+			background: white;
+			
+			padding: 1rem;
+			border:solid white 1px;
+		}
+		&.open{
+			.item_content{
+				display: block;
+			}
+			.item_title{
+				&:after{
+					content:"lsl"
+				}
+			}
+		}
+	}
+}

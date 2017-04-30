@@ -9,14 +9,17 @@ header{
 	box-sizing: border-box;
 	vertical-align: top;
 
+	display:flex;
+
+
 	.logo{
-		display: inline-block;
-		width: 20%;
+		flex-grow: 1;
 		height: 100%;
 		box-sizing: border-box;
 		// margin: 1em 0 0 0;
 		font-size: 2em;
 		vertical-align: top;
+		padding: 0 .2em;
 		.logo_link{
 			padding: .4em 0 0 0;
 			&:hover{
@@ -28,13 +31,12 @@ header{
 		}
 	}
 	.main_menu_wrap{
-		display: inline-block;
-		width: 70%;
+		flex-grow: 2;
 		height: 100%;
 		margin: 0;
 		box-sizing: border-box;
 		vertical-align: top;
-		// text-align: left;
+		padding:0 .2em;
 		.main_menu{
 			list-style: none;
 		  .menu_item{

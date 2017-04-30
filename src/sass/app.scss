@@ -2,12 +2,40 @@
 @import "header";
 @import "promo";
 @import "about";
+@import "services";
+@import "faq";
 body{
-    margin: 0;
-    background: #f2f2f2;
-    font-size: 14px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin: 0;
+	// background: #f2f2f2;
+	font-size: 14px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .main_wrapper{
-    margin-top: 60px;
+	margin-top: 60px;
+}
+section{
+	max-width: 960px;
+	margin: 0 auto;
+}
+.block_title{
+	text-align: center;
+	font-size:2rem;
+}
+.btn{
+	background: none;
+	border:solid black 1px;
+	border-radius: 0;
+	height: 2rem;
+	width: 10rem;
+	font-size: 1.2rem;
+	&:hover{
+		border:solid orange 1px;
+	}
+}
+.row{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+	align-items: stretch;
 }
