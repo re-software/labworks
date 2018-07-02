@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/codebase";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
@@ -74,60 +74,140 @@
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sass_app_scss__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__sass_app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__sass_app_scss__);
 
-const calc = document.querySelector(".time");
 
-const inputs = document.querySelectorAll("input[type=radio]");
-const prices = {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+__webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var calc = document.querySelector(".time");
+
+var inputs = document.querySelectorAll("input[type=radio]");
+var prices = {
     day: 3,
     three: 2,
     week: 1
 };
-
-const priceCont = document.querySelector("#price");
-for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("change", e => {
-        console.log(e.target);
-        let id = e.target.id;
-        let price = prices[id];
-        priceCont.innerHTML = `${price} rub`;
+// const rates = {
+//     fast: {
+//         price: 3,
+//         term: "В течении дня"
+//     },
+//     standart: {
+//         price: 2,
+//         term: "От 3 до 4 дней"
+//     },
+//     econom: {
+//         price: 1,
+//         term: "Неделя"
+//     }
+// };
+var rates = {
+    day: {
+        price: 3,
+        term: "В течении дня"
+    },
+    three: {
+        price: 2,
+        term: "От 3 до 4 дней"
+    },
+    week: {
+        price: 1,
+        term: "Неделя"
+    }
+};
+function showPrice(id) {
+    var price = rates[id].price;
+    priceCont.innerHTML = price + " BYN";
+    term.innerHTML = rates[id].term;
+}
+var term = document.querySelector("#term");
+var priceCont = document.querySelector("#price");
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("change", function (e) {
+        var id = e.target.id;
+        showPrice(id);
     });
 }
+showPrice("three");
 
 // accroditon
 
-class Accord {
-    constructor() {
+var Accord = function () {
+    function Accord() {
+        _classCallCheck(this, Accord);
+
         this.container = document.querySelector(".accordion");
         this.items = this.container.querySelectorAll(".accordion_item");
         this._init();
     }
-    _init() {
-        for (let i = 0; i < this.items.length; i++) {
-            this.items[i].addEventListener("click", e => {
-                this._hideOther(i);
-                const item = this.items[i];
-                const content = item.querySelector(".item_content");
-                content.classList.toggle("open");
-            });
+
+    _createClass(Accord, [{
+        key: "check",
+        value: function check(item, index) {
+            this._hideOther(index);
+            item.classList.toggle("open");
         }
-    }
-    _hideOther(id) {
-        for (let i = 0; i < this.items.length; i++) {
-            if (id === i) continue;
-            const item = this.items[i];
-            const content = item.querySelector(".item_content");
-            content.classList.toggle("open", false);
+    }, {
+        key: "_init",
+        value: function _init() {
+            var _this = this;
+
+            var _loop = function _loop(_i) {
+                _this.items[_i].addEventListener("click", function (e) {
+                    _this.check(_this.items[_i], _i);
+                });
+            };
+
+            for (var _i = 0; _i < this.items.length; _i++) {
+                _loop(_i);
+            }
         }
-    }
+    }, {
+        key: "_hideOther",
+        value: function _hideOther(index) {
+            for (var _i2 = 0; _i2 < this.items.length; _i2++) {
+                if (index === _i2) continue;
+                var item = this.items[_i2];
+                item.classList.toggle("open", false);
+                // const content = item.querySelector(".item_content");
+                // content.classList.toggle("open", false);
+            }
+        }
+    }]);
+
+    return Accord;
+}();
+
+var accord = new Accord();
+// accord.check(document.querySelectorAll(".accordion_item")[0],0)
+
+
+/// header 
+function getPosition(element) {
+    var rect = element.getBoundingClientRect();
+    // console.log(rect.top, rect.right, rect.bottom, rect.left);
+    return { top: rect.top, right: rect.right, bottom: rect.bottom, left: rect.left };
 }
-new Accord();
+var header = document.querySelector("#main_menu");
+header.addEventListener("click", function (e) {
+    console.log(e);
+});
+
+window.addEventListener("hashchange", function (e) {
+    // console.log(document.location.hash);
+    e.preventDefault();
+    var hash = document.location.hash.replace("#", "");
+    console.log(hash);
+    var pos = getPosition(document.querySelector("." + hash));
+    console.log(pos.top);
+    window.scrollTo(0, pos.top);
+});
 
 /***/ })
 /******/ ]);

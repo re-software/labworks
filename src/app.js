@@ -107,3 +107,5 @@ window.addEventListener("hashchange", e => {
     console.log(pos.top);
     window.scrollTo(0, pos.top)
 })
+
+console.log("llalala")

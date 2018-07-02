@@ -7,7 +7,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'codebase'),
-		publicPath: "/codebase"
+		publicPath: "./"
 	},
 	module: {
 		loaders: [
@@ -15,9 +15,9 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /(node_modules|bower_components)/,
 				loader: 'babel-loader',
-				// getOptions: {
-				//     presets: ['env']
-				// }
+				options: {
+				    presets: ['es2015']
+				}
 			}, {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
@@ -42,8 +42,8 @@ module.exports = {
 					{
 						loader: 'image-webpack-loader',
 						query: {
-							progressive: true,
-							optimizationLevel: 7,
+							// progressive: true,
+							optimizationLevel: 0,
 							interlaced: false,
 							pngquant: {
 								quality: '65-90',
